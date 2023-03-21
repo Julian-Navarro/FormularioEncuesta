@@ -18,16 +18,34 @@ export class SurveyRepository implements DatabaseRepository<Survey>{
 
     }
 
-    get(id: Id, query?: Query | undefined): Promise<Survey> {
-        throw new Error("Method not implemented.");
+    async get(id: Id, query?: Query | undefined): Promise<Survey> {
+        const repository = database.getRepository(Survey);
+        const survey = await repository.findOneBy({id: id as any});
+        if (!survey) {
+            throw new Error("La encuesta con ese ID no existe")
+        };
+        return survey   
     }
 
-    update(id: Id, data: Survey, query: Query): Promise<Survey> {
-        throw new Error("Method not implemented.");
+    async update(id: Id, data: Survey, query: Query): Promise<Survey> {
+        const repository = database.getRepository(Survey);
+        const survey = await repository.update(id, data);
+        if (!survey) {
+            throw new Error("No existe encuesta con el ID especificado")
+        };
+        return this.get(id, query) 
     }
 
-    remove(id: Id, query?: Query | undefined): Promise<Survey> {
-        throw new Error("Method not implemented.");
-    }
-    
+    async remove(id: Id, query?: Query ): Promise<Survey> {
+        const repository = database.getRepository(Survey);
+
+        const surveyToDelete = await this.get(id, query)
+
+        if(!surveyToDelete) {
+            throw new Error("No existe encuesta con el ID especificado")
+        } else {
+            await repository.delete(id)
+        }
+        return surveyToDelete
+    }   
 }

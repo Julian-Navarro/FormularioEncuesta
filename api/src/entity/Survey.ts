@@ -5,7 +5,7 @@ import {
     CreateDateColumn,
 } from "typeorm"
 
-// export type Role = "admin" | "user";
+
 @Entity()
 export class Survey {
     @PrimaryGeneratedColumn("uuid")
@@ -20,10 +20,33 @@ export class Survey {
     punctuation!: number;
     @CreateDateColumn()
     createdAt!: Date;
-    @Column("text", {array: true})
-    livesWith?: string[];
-    // @Column("text", {array: true})
-    // occupation!: string[];
-    // @Column({nullable: false})
-    // childrens!: string;
+    @Column({nullable: true})
+    childrens?: string;
+    @Column({
+        array: true,
+        type: "enum",
+        enum: [
+        "With my parents", 
+        "With my partner", 
+        "With my childrens", 
+        "With my brothers",
+        "With my pet",
+        "With my friend", 
+        "Alone",
+        "Other"
+        ]
+    })
+    livesWith!: string[];
+    @Column({
+        array:true,
+        type: "enum",
+        enum: [
+        "Working", 
+        "Studing", 
+        "Homeowner", 
+        "Retired", "Looking for a job", 
+        "Other"
+        ],
+    })
+    occupation!: any[];
 }
