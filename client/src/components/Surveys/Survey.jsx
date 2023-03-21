@@ -1,21 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { HOST } from "../../utils.js";
-
+import { useNavigate } from "react-router-dom";
 export default function Survey () {
-    let array;
-    let cb = async () => {
-        array = await axios.get(`${HOST}/api/surveys`)
-        // return array.data
+    const navigate = useNavigate();
+    const [surveys, setSurveys] = useState(undefined);
+    const getSurveys = async () => {
+        const surveysDB = await axios.get(`${HOST}/api/surveys`)
+        setSurveys(surveysDB.data)
     }
-    useEffect(()=>{
-        cb()
+    useEffect(() => {
+        getSurveys()
         console.log("USE-EFFECT: ");
+        console.log("Surveys: ", surveys);
     },[])
+
     return (
         <div>
-            {array !== undefined ? array.data.map((sur)=> <h1>{sur.gender}</h1>) : null}
-            Asa
+            <h2>Surveys</h2>
+            {surveys !== undefined ? surveys.map((sur)=> <h1 key={sur.id}>{sur.gender}</h1>) : null}
+            <button onClick={()=>navigate("/survey")}>Hacer encuesta</button>
         </div>
     )
 }
