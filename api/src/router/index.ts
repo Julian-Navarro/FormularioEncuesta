@@ -7,9 +7,9 @@ const controller = new SurveyController(
 );
 
 router.get("/surveys", controller.list.bind(controller))
+router.post("/surveys", controller.create.bind(controller))
 router.get("/surveys/:surveyId", controller.get.bind(controller))
 router.put("/surveys/:surveyId", controller.update.bind(controller))
-router.post("/surveys", controller.create.bind(controller))
 router.delete("/surveys/:surveyId", controller.remove.bind(controller))
 
 export default router;
