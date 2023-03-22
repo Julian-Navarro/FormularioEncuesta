@@ -94,11 +94,9 @@ export default function FormSurvey () {
         validate(page)
         if(errors.gender === "" 
           && errors.livesWith === ""
-          && errors.livesWith === ""
           && errors.childrens === ""
           && errors.city === ""
           && errors.commune === ""
-          && errors.occupation === ""
           && errors.occupation === ""
           && errors.punctuation === ""
         ) {
@@ -169,7 +167,7 @@ useEffect(()=>{
                   <Div wd="45%" jfCont="space-evenly">
                     {page>= 1 && page <= 5?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>handlerDecrementPage()}>Volver</Button>:null}
                     {page <=5?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>handlerIncrementPage()}>Siguiente</Button>:null}
-                    {page===6?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>{alert("FINALIZADO"); navigate("/")}}>Finalizar</Button>:null}
+                    {page===6?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>{alert("Encuesta finalizada"); navigate("/")}}>Finalizar</Button>:null}
                   </Div>
 
 
