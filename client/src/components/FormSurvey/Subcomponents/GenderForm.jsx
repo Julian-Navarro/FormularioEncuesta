@@ -1,15 +1,18 @@
 import React from "react";
+import { Div, Button, H1 } from "../../../styled-components/styled-components";
 
-export default function GenderForm ({ handlerSetInput }) {
+export default function GenderForm ({ input ,handlerSetInput }) {
+    const green = "#00FA9A"
     return (
         <div>
-            <h2>Queremos conocerte mejor para brindarte los mejores beneficios</h2>
-            <h3>Podrías indicarnos ¿Con qué género te identificas?</h3>
-            <div>
-              <button value="female" name="gender" onClick={(e)=>handlerSetInput(e)}>Mujer</button>
-              <button value="male" name="gender" onClick={(e)=>handlerSetInput(e)}>Hombre</button>
-              <button value="Unknow" name="gender" onClick={(e)=>handlerSetInput(e)}>Prefiero no decirlo</button>
-            </div>
+            <H1 fSize="32px">Te damos la bienvenida!</H1>
+            <H1 fSize="20px" >Queremos conocerte mejor para brindarte los mejores beneficios</H1>
+            <H1 fSize="20px" >Podrías indicarnos ¿Con qué género te identificas?</H1>
+            <Div wd="100%" jfCont="space-around">
+              <Button _hoverBg={green} pd="5px 35px 5px 35px" value="female" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "female" ? green : "#fff"}>Mujer</Button>
+              <Button _hoverBg={green} pd="5px 35px 5px 35px" value="male" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "male" ? green : "#fff"}>Hombre</Button>
+              <Button _hoverBg={green} pd="5px 35px 5px 35px" value="Unknow" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "Unknow" ? green : "#fff"}>Prefiero no decirlo</Button>
+            </Div>
         </div>
     )
 }
