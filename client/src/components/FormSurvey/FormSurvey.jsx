@@ -9,8 +9,21 @@ import PunctuationForm from "./Subcomponents/PunctuationForm";
 import SurveyEnd from "./Subcomponents/SurveyEnd";
 import axios from "axios";
 import { HOST } from "../../utils";
+import { Div, Button, H1, Img } from "../../styled-components/styled-components";
+import img from "../../img.png"
+import logo from "../../images.png"
+import icon from "../../icon.jpg"
 
 export default function FormSurvey () {
+    const green = "#00FA9A"
+    const [flag, setFlag] = useState(false)
+    function handlerSetFlag(){
+        if(flag) {
+            setFlag(false)
+        } else {
+            setFlag(true)
+        }
+    }
     const navigate = useNavigate()
     const [page, setPage] = useState(0);
     const [input, setInput] = useState({
@@ -50,12 +63,12 @@ export default function FormSurvey () {
                 setInput({...input, [e.target.name]: ""})
             }
         }
+        handlerSetFlag()
     }
 
     const keys = ["gender", "livesWith", "childrens", "city", "occupation", "punctuation"];
     const keysEspañol = ["género", "con quién vives", "cuantos hijos tienes", "dónde vives y comuna", "cual es tu ocupación", "una puntuación de recomendación"]
     function validate(page) {
-        // console.log("TYPEOF INPUT CURRENT KEY: ",typeof input[keys[page]]);
         if(typeof input[keys[page]] === "object") {
             if(input[keys[page]].length === 0) {
                 errors = {...errors, [keys[page]]: `Debes indicar ${keysEspañol[page]}`}
@@ -80,14 +93,15 @@ export default function FormSurvey () {
     function handlerIncrementPage() {
         validate(page)
         if(errors.gender === "" 
-          && errors.livesWith.length === 0
+          && errors.livesWith === ""
+          && errors.livesWith === ""
           && errors.childrens === ""
           && errors.city === ""
           && errors.commune === ""
-          && errors.occupation.length === 0
+          && errors.occupation === ""
+          && errors.occupation === ""
           && errors.punctuation === ""
         ) {
-            console.log("NO HAY ERRORES", errors);
             if(page!==1){
                 setPage(page+1)
             } else if(!input.livesWith.includes("With my childrens")) {
@@ -96,8 +110,6 @@ export default function FormSurvey () {
                 setPage(page+1)
             }
         } else {
-            console.log("INPUT: ",input);
-            console.log("HAY ERRORES", errors)
             alert("Faltó seleccionar una opción")
         }
         if(input.gender !== ""
@@ -107,55 +119,62 @@ export default function FormSurvey () {
         && input.occupation.length !== 0
         && input.punctuation !== 0
         ) {
-            console.log("POSTEANDO");
             handlerPostSurvey()
-        } else {
-            console.log("NO SE PUEDE POSTEAR");
         }
     }
+
     function handlerDecrementPage(){
-        if(page===3 && errors.childrens === ""){
+        if(page===3 && !input.livesWith.includes("With my childrens")){
             setPage(page-2)
         } else {
             setPage(page-1)
         }
     }
     async function handlerPostSurvey(){
-        // setInput({...input, punctuation: Number(input.punctuation)})
-        console.log("INPUT: ",{...input, punctuation: Number(input.punctuation)});
         await axios.post(`${HOST}/api/surveys`, {...input, punctuation: Number(input.punctuation)})
-        setPage(page+1)    
     }
 useEffect(()=>{
-    console.log("Rendering page: ",page);
-    console.log("INPUT: ",input);
-    console.log("ERRORS: ",errors);
-
-},[page])
+},[page, flag])
     return (
-        <div>
-            <h2>FORM PAGE {page}</h2>
-            <button onClick={()=>navigate("/")}>Ver encuestas</button>
+        <Div flexDir="column" wd="100%"  >
+            <Div wd="95%" jfCont="space-between">
+                <Div>
+                    <Img wd="140px" src={icon}></Img>
+                    {page === 0 ?<H1 fSize="20px"> 40</H1>:null}
+                    {page === 1 ?<H1 fSize="20px">36</H1>:null}            
+                    {page === 2 ?<H1 fSize="20px">34</H1>:null}    
+                    {page === 3 ?<H1 fSize="20px">32</H1>:null}    
+                    {page === 4 ?<H1 fSize="20px">30</H1>:null}    
+                    {page === 5 ?<H1 fSize="20px">6</H1>:null}  
+                    {page === 6 ?<H1 fSize="20px">0</H1>:null}
+                    <H1 fSize="16px">'' segundos para terminar</H1>
+                </Div>
 
-            {page===0?<h2>Te damos la bienvenida!</h2>:null}
+                <Img bSh="0 0 1rem .3rem gray"br="50%" wd="8rem" hg="8rem" src={logo} alt="" />
+            </Div>
 
-            <div>
-                {page===0? <GenderForm handlerSetInput={handlerSetInput}/>:null}
-                {page===1? <LivesWith handlerSetInput={handlerSetInput}/>:null}
-                {page===2? <ChildrensForm handlerSetInput={handlerSetInput}/>:null}
-                {page===3? <CityForm handlerSetInput={handlerSetInput}/>:null}
-                {page===4? <OccupationForm handlerSetInput={handlerSetInput}/>:null}
-                {page===5? <PunctuationForm handlerSetInput={handlerSetInput}/>:null}
-                {page===6? <SurveyEnd/>:null}
-            </div>
+            <Div alItems="flex-end" flexDir="column" wd="90%" hg="82vh" img={img}>
 
-            <div>
-                {page>= 1 && page <= 5?<button onClick={()=>handlerDecrementPage()}>Volver</button>:null}
-                {page <=4?<button onClick={()=>handlerIncrementPage()}>Siguiente</button>:null}
-                {page ===5?<button onClick={()=>handlerIncrementPage()}>Siguiente</button>:null}
 
-                {page===6?<button onClick={()=>{alert("FINALIZADO")}}>Finalizar</button>:null}
-            </div>
-        </div>
+                <Div hg="60%" wd="45%">
+                  {page===0? <GenderForm input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===1? <LivesWith input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===2? <ChildrensForm input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===3? <CityForm input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===4? <OccupationForm input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===5? <PunctuationForm input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===6? <SurveyEnd/>:null}
+                </Div>
+  
+                  <Div wd="45%" jfCont="space-evenly">
+                    {page>= 1 && page <= 5?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>handlerDecrementPage()}>Volver</Button>:null}
+                    {page <=5?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>handlerIncrementPage()}>Siguiente</Button>:null}
+                    {page===6?<Button _hoverBg="#3CB371" _hoverBc="#3CB371"  bg={green} onClick={()=>{alert("FINALIZADO"); navigate("/")}}>Finalizar</Button>:null}
+                  </Div>
+
+
+
+            </Div>
+        </Div>
     )
 }
