@@ -26,14 +26,14 @@ export class Survey {
         array: true,
         type: "enum",
         enum: [
-        "With my parents", 
-        "With my partner", 
-        "With my childrens", 
-        "With my brothers",
-        "With my pet",
-        "With my friend", 
-        "Alone",
-        "Other"
+        "Con mis padres", 
+        "Con mi pareja", 
+        "Con mis hijos", 
+        "Con mis hermanos",
+        "Con mi mascota",
+        "Con amigos", 
+        "Solo",
+        "Otro"
         ]
     })
     livesWith!: string[];
@@ -41,11 +41,11 @@ export class Survey {
         array:true,
         type: "enum",
         enum: [
-        "Working", 
-        "Studing", 
-        "Homeowner", 
-        "Retired", "Looking for a job", 
-        "Other"
+        "Trabajo", 
+        "Estudio", 
+        "Dueño de casa", 
+        "Retirado", "Buscando trabajo", 
+        "Otro"
         ],
     })
     occupation!: any[];
