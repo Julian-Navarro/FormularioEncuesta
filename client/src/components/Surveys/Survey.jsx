@@ -31,7 +31,7 @@ export default function Survey () {
                     key={sur.id}
                     >
                     <Div bc="none"flexDir="column"jfCont="space-between"wd="100%"hg="60%"br="10px">
-                        <Div clPath="50% 0, 99% 0%, 50% 100%, 1% 0"bc="none"bg="#56C985" wd="100%" hg="36px"></Div>
+                        <Div clPath="50% 0, 99% 0%, 80% 100%, 1% 0"bc="none"bg="#56C985" wd="100%" hg="36px"></Div>
                         <br />
                         <Div wd="90%"hg="1.7rem" mb="4px" bc="none"bg="#5AD4EC"br="none" clPath="93% 0, 100% 93%, 7%  100%, 0% 7%">
                             <H1 mr="4px" br="12px"fSize="16px" fWeight="700"wd="5rem"bg="#5AD4EC">Género: </H1>
