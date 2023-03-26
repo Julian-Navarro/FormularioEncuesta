@@ -1,3 +1,3 @@
 # FormularioEncuesta
 
-- Encuesta de prueba para CustomersScoops
+- Encuesta de prueba para CustomerScoops

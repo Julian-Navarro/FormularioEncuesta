@@ -102,7 +102,7 @@ export default function FormSurvey () {
         ) {
             if(page!==1){
                 setPage(page+1)
-            } else if(!input.livesWith.includes("With my childrens")) {
+            } else if(!input.livesWith.includes("Con mis hijos")) {
                 setPage(page+2)
             } else {
                 setPage(page+1)
@@ -122,7 +122,7 @@ export default function FormSurvey () {
     }
 
     function handlerDecrementPage(){
-        if(page===3 && !input.livesWith.includes("With my childrens")){
+        if(page===3 && !input.livesWith.includes("Con mis hijos")){
             setPage(page-2)
         } else {
             setPage(page-1)
@@ -134,7 +134,7 @@ export default function FormSurvey () {
 useEffect(()=>{
 },[page, flag])
     return (
-        <Div flexDir="column" wd="100%"  >
+        <Div flexDir="column" wd="99%"hg="95vh">
             <Div wd="95%" jfCont="space-between">
                 <Div>
                     <Img wd="140px" src={icon}></Img>
