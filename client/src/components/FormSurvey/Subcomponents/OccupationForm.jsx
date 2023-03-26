@@ -10,12 +10,12 @@ export default function OccupationForm({ input, handlerSetInput }) {
                 Cuéntanos ¿Cuál es tu ocupación?
             </H1>
             <Div flWr="wrap" jfCont="space-around" wd="30rem" hg="8rem">
-                <Button bg={input.occupation.includes("Studing") ? green : "#fff"} name="occupation" value="Studing" onClick={(e)=>handlerSetInput(e)} >Estudio</Button>
-                <Button bg={input.occupation.includes("Working") ? green : "#fff"} name="occupation" value="Working" onClick={(e)=>handlerSetInput(e)} >Trabajo</Button>
-                <Button bg={input.occupation.includes("Retired") ? green : "#fff"} name="occupation" value="Retired" onClick={(e)=>handlerSetInput(e)} >Soy pensionado / jubilado</Button>
-                <Button bg={input.occupation.includes("Looking for a job") ? green : "#fff"} name="occupation" value="Looking for a job" onClick={(e)=>handlerSetInput(e)} >Estoy en búsqueda laboral</Button>
-                <Button bg={input.occupation.includes("Homeowner") ? green : "#fff"} name="occupation" value="Homeowner" onClick={(e)=>handlerSetInput(e)} >Dueño/a de casa</Button>
-                <Button bg={input.occupation.includes("Other") ? green : "#fff"}  name="occupation" value="Other" onClick={(e)=>handlerSetInput(e)} >Otra ocupación</Button>
+                <Button bg={input.occupation.includes("Estudio") ? green : "#fff"} name="occupation" value="Estudio" onClick={(e)=>handlerSetInput(e)} >Estudio</Button>
+                <Button bg={input.occupation.includes("Trabajo") ? green : "#fff"} name="occupation" value="Trabajo" onClick={(e)=>handlerSetInput(e)} >Trabajo</Button>
+                <Button bg={input.occupation.includes("Retirado") ? green : "#fff"} name="occupation" value="Retirado" onClick={(e)=>handlerSetInput(e)} >Soy pensionado / jubilado</Button>
+                <Button bg={input.occupation.includes("Buscando trabajo") ? green : "#fff"} name="occupation" value="Buscando trabajo" onClick={(e)=>handlerSetInput(e)} >Estoy en búsqueda laboral</Button>
+                <Button bg={input.occupation.includes("Dueño de casa") ? green : "#fff"} name="occupation" value="Dueño de casa" onClick={(e)=>handlerSetInput(e)} >Dueño/a de casa</Button>
+                <Button bg={input.occupation.includes("Otro") ? green : "#fff"}  name="occupation" value="Otro" onClick={(e)=>handlerSetInput(e)} >Otra ocupación</Button>
             </Div>
         </Div>
     )
