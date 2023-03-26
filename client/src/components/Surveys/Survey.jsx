@@ -17,8 +17,8 @@ export default function Survey () {
 
     return (
         <Div flexDir="column" >
-            <H1>Surveys</H1>
-            <Button _hoverBc="orange" onClick={()=>navigate("/survey")}>Hacer encuesta</Button>
+            <H1 fSize="40px"letSp=".1rem">Encuestas</H1>
+            <Button _hoverBc="orange" letSp=".1rem"wd="12rem"hg="3rem"fSize="22px"onClick={()=>navigate("/survey")}>Hacer encuesta</Button>
             <Div flWr="wrap" jfCont="space-around"  alItems="space-around" wd="100%" hg="100vh">
             {surveys !== undefined ? surveys.map((sur)=> (
                 <Div bs="8px 8px .7rem .3rem gray"
@@ -27,7 +27,7 @@ export default function Survey () {
                     br="10px" 
                     flexDir="column" 
                     wd="370px" 
-                    hg="480px" 
+                    hg="500px" 
                     key={sur.id}
                     >
                     <Div bc="none"flexDir="column"jfCont="space-between"wd="100%"hg="60%"br="10px">
@@ -58,19 +58,19 @@ export default function Survey () {
                     </Div>
                     <Div bc="none"jfCont="space-around" clPath="93% 0, 100% 93%, 7% 100%, 0% 7%"wd="100%" hg="50%"bg="#56C985">
                         <Div hg="100%"bc="none" flexDir="column"br="10px"wd="50%"jfCont="space-between"bg="transparent">
-                            <H1 mr="4px" br="8px"fSize="16px" fWeight="700"hg="1rem" bg="transparent"> Vive: </H1>
+                            <H1 mr="4px" br="8px"fSize="18px" fWeight="700"hg="1rem" bg="transparent"> Vive: </H1>
                             <Div wd="100%" hg="80%"flexDir="column" bc="none"br="0px 0px 0px 10px"bg="transparent">
                                 {
-                                sur.livesWith.map((lv) => <H1 fWeight="700"br="8px" fSize="14px"hg=".7rem"wd="6rem">{lv}</H1>  )
+                                sur.livesWith.map((lv) => <H1 fWeight="700"br="8px" fSize="14px"hg=".7rem"wd="6rem"bg="#B8FFD5"pd="3px">{lv}</H1>  )
                                 }
                             </Div>
                         </Div>
 
                         <Div br="5%" bc="none" hg="100%" flexDir="column"wd="50%"bg="transparent">
-                            <H1 mr="4px" br="8px"fSize="16px" fWeight="700"hg="1rem" bg="transparent">Ocupaciones: </H1>
+                            <H1 mr="4px" br="8px"fSize="18px" fWeight="700"hg="1rem" bg="transparent">Ocupaciones: </H1>
                             <Div wd="100%" hg="80%" flexDir="column" bc="none"br="0px 0px 10px 0px"bg="transparent">
                                 {
-                                sur.occupation.map((occ) => <H1 fWeight="700"br="8px"fSize="14px"hg=".7rem"wd="6rem">{occ}</H1> )
+                                sur.occupation.map((occ) => <H1 fWeight="700"br="8px"fSize="14px"hg=".7rem"wd="6rem"bg="#B8FFD5"pd="3px">{occ}</H1> )
                                 }
                             </Div>                           
                         </Div>
