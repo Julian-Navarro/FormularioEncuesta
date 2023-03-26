@@ -2,7 +2,7 @@ import styled from "styled-components"
 const green = "#00FA9A"
 export const Div = styled.div`
     background: ${({bg}) => bg || "#fff"};
-    padding: ${({pd})=>pd || "5px"};
+    padding: ${({pd})=>pd || "none"};
     display: ${({display})=>display || "flex"};
     flex-direction: ${({flexDir})=>flexDir || "row"};
     flex-wrap: ${({flWr})=>flWr};
@@ -14,10 +14,11 @@ export const Div = styled.div`
     width: ${({wd})=>wd || "auto"};
     background-image: url(${({img})=>img});
     background-repeat: no-repeat;
-    margin-right: ${({mr})=>mr};
-    margin-top: ${({mt})=>mt};
-    box-shadow: ${({bs})=>bs || "none"}
-
+    margin-right: ${({mr})=>mr || "none"};
+    margin-top: ${({mt})=>mt || "none"};
+    margin-bottom: ${({mb})=>mb || "none"};
+    box-shadow: ${({bs})=>bs || "none"};
+    clip-path: polygon(${({clPath})=>clPath || "none"});
 `
 export const Button = styled.button`
     background: ${({bg}) => bg || "#fff"};
@@ -29,7 +30,7 @@ export const Button = styled.button`
     border-radius: .5rem;
     font-weight: ${({fWeight})=>fWeight || "700"};
     border: 2px solid ${({bc})=>bc || green};
-    heigth: ${({hg})=>hg || "auto"};
+    height: ${({hg})=>hg || "auto"};
     width: ${({wd})=>wd || "auto"};
     cursor: pointer;
     transition: .4s;
@@ -41,19 +42,20 @@ export const Button = styled.button`
 export const H1 = styled.h1`    
     background: ${({bg})=>bg || "#fff"};
     color: ${({color})=>color || "#161616"};
-    padding: ${({pd})=>pd || "8px"};
+    padding: ${({pd})=>pd || "2px"};
     font-size: ${({fSize})=>fSize || "30px"};
     font-weight: ${({fWeight})=>fWeight || "500"};
-    padding: ${({pd})=>pd || "5px"};
     border-radius: ${({br})=>br ||"none"};
     border: 2px solid ${({bc})=>bc || "none"};
     display: ${({display})=>display || "flex"};
     flex-direction: ${({flexDir})=>flexDir || "row"};
     justify-content: ${({jfCont})=>jfCont || "center"};
     align-items: ${({alItems})=>alItems || "center"};
-    heigth: ${({hg})=>hg || "auto"};
+    height: ${({hg})=>hg || "auto"};
     width: ${({wd})=>wd || "auto"};
-    font-family: ${({fnFamily})=>fnFamily || "cursive"}
+    margin-right: ${({mr})=>mr || "none"};
+    font-family: ${({fnFamily})=>fnFamily || "cursive"};
+    font-weight: ${({fWeight})=>fWeight || "500"};
 `
 export const Select = styled.select`
     background: ${({bg}) => bg || "#fff"};
