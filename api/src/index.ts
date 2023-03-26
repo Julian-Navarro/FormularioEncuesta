@@ -4,6 +4,7 @@ import RouterController from "./router/index";
 import database from "./config/database";
 import morgan from "morgan";
 import cors from "cors";
+import { PORT } from "./config/config";
 
 const app = express();
 
@@ -17,6 +18,6 @@ database.initialize()
 )
 
 app.use("/api", RouterController)
-app.listen(3001, () => {
-    console.log("App execute in port: 3001");
+app.listen(PORT, () => {
+    console.log(`App execute in port: ${PORT}`);
 })
