@@ -11,7 +11,7 @@ export default function GenderForm ({ input ,handlerSetInput }) {
             <Div wd="100%" jfCont="space-around">
               <Button _hoverBg={green} pd="5px 35px 5px 35px" value="female" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "female" ? green : "#fff"}>Mujer</Button>
               <Button _hoverBg={green} pd="5px 35px 5px 35px" value="male" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "male" ? green : "#fff"}>Hombre</Button>
-              <Button _hoverBg={green} pd="5px 35px 5px 35px" value="Unknow" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "Unknow" ? green : "#fff"}>Prefiero no decirlo</Button>
+              <Button _hoverBg={green} pd="5px 35px 5px 35px" value="Other" name="gender" onClick={(e)=>handlerSetInput(e)} bg={input.gender === "Other" ? green : "#fff"}>Otro</Button>
             </Div>
         </div>
     )

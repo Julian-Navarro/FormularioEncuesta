@@ -134,7 +134,7 @@ export default function FormSurvey () {
 useEffect(()=>{
 },[page, flag])
     return (
-        <Div flexDir="column" wd="100%"  >
+        <Div flexDir="column" wd="99%"hg="95vh">
             <Div wd="95%" jfCont="space-between">
                 <Div>
                     <Img wd="140px" src={icon}></Img>
