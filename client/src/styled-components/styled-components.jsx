@@ -19,6 +19,7 @@ export const Div = styled.div`
     margin-bottom: ${({mb})=>mb || "none"};
     box-shadow: ${({bs})=>bs || "none"};
     clip-path: polygon(${({clPath})=>clPath || "none"});
+    transform: rotateX(${({rotX})=> rotX|| "none"});
 `
 export const Button = styled.button`
     background: ${({bg}) => bg || "#fff"};
@@ -28,10 +29,12 @@ export const Button = styled.button`
     justify-content: ${({jfCont})=>jfCont || "center"};
     align-items: ${({alItems})=>alItems || "center"};
     border-radius: .5rem;
+    font-size: ${({fSize})=>fSize || "16px"};
     font-weight: ${({fWeight})=>fWeight || "700"};
     border: 2px solid ${({bc})=>bc || green};
     height: ${({hg})=>hg || "auto"};
     width: ${({wd})=>wd || "auto"};
+    letter-spacing: ${({letSp})=> letSp|| "none"};
     cursor: pointer;
     transition: .4s;
     &:hover{
@@ -56,6 +59,7 @@ export const H1 = styled.h1`
     margin-right: ${({mr})=>mr || "none"};
     font-family: ${({fnFamily})=>fnFamily || "cursive"};
     font-weight: ${({fWeight})=>fWeight || "500"};
+    letter-spacing: ${({letSp})=> letSp|| "none"};
 `
 export const Select = styled.select`
     background: ${({bg}) => bg || "#fff"};
