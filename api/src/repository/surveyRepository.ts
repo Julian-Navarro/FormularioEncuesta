@@ -5,20 +5,20 @@ import { Survey } from "../entity/Survey";
 
 export class SurveyRepository implements DatabaseRepository<Survey>{
     
-    async create(data: Partial<Survey>, query?: Query | undefined): Promise<Survey> {
+    async create(data: Partial<Survey>, _query?: Query | undefined): Promise<Survey> {
     const repository = database.getRepository(Survey)
     const newSurvey = repository.create(data);
     await repository.save(newSurvey)
     return newSurvey
     }
 
-    async list(query?: Query | undefined): Promise<Survey[]> {
+    async list(_query?: Query | undefined): Promise<Survey[]> {
         const repository = await database.getRepository(Survey);
         return repository.find()
 
     }
 
-    async get(id: Id, query?: Query | undefined): Promise<Survey> {
+    async get(id: Id, _query?: Query | undefined): Promise<Survey> {
         const repository = database.getRepository(Survey);
         const survey = await repository.findOneBy({id: id as any});
         if (!survey) {
