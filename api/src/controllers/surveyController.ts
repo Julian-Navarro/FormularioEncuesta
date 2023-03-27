@@ -5,7 +5,7 @@ export class SurveyController {
     constructor(private repository: DatabaseRepository<Survey>) {}
 
     async list(
-        req: Request, 
+        _req: Request, 
         res: Response, 
         next: NextFunction
         ):Promise<void> {
@@ -79,7 +79,7 @@ export class SurveyController {
            )  {
                 res.status(404).json({msg: "Faltan datos para actualizar la encuesta"})
             } else {
-                const updatedSurvey = await this.repository.update(surveyId, req.body)
+                const updatedSurvey = await this.repository.update(surveyId as string, req.body as any)
                 res.status(200).json(updatedSurvey)
             }
      } catch (error) {
