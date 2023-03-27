@@ -1,10 +1,10 @@
 import express from "express";
-import RouterController from "./router/index.js";
-import database from "./config/database.ts";
+import RouterController from "./router/index";
+import database from "./config/database";
 import morgan from "morgan";
 import cors from "cors";
 import "reflect-metadata";
-import { PORT } from "./config/config.ts";
+import { PORT } from "./config/config";
 
 const app = express();
 
