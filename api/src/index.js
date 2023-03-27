@@ -11,13 +11,13 @@ const app = express();
 app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
-database.initialize()
-.then(()=> console.log("Database connected"))
-.catch((error)=>console.log(error)
-)
+app.use(express.urlencoded({ extended: false }));
+database
+  .initialize()
+  .then(() => console.log("Database connected"))
+  .catch((error) => console.log(error));
 
-app.use("/api", RouterController)
+app.use("/api", RouterController);
 app.listen(PORT, () => {
-    console.log(`App execute in port: ${PORT}`);
-})
+  console.log(`App execute in port: ${PORT}`);
+});
