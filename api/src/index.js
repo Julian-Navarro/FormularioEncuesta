@@ -1,5 +1,5 @@
 import express from "express";
-import RouterController from "./router/index.ts";
+import RouterController from "./router/index.js";
 import database from "./config/database.ts";
 import morgan from "morgan";
 import cors from "cors";
