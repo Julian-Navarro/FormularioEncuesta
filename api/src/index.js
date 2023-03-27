@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 database
   .initialize()
-  .then(() => console.log("Database connected"))
+  .then(() => console.log("Database connected."))
   .catch((error) => console.log(error));
 
 app.use("/api", RouterController);
