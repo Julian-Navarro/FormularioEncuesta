@@ -6,7 +6,7 @@ import { H1, Div, Button} from "../../styled-components/styled-components";
 
 export default function Survey () {
     const navigate = useNavigate();
-    const [surveys, setSurveys] = useState(undefined);
+    const [surveys, setSurveys] = useState([]);
     const getSurveys = async () => {
         const surveysDB = await axios.get(`${HOST}/api/surveys`)
         setSurveys(surveysDB.data)
@@ -14,13 +14,16 @@ export default function Survey () {
     useEffect(() => {
         getSurveys()
     },[])
+    useEffect(()=>{
+
+    },[surveys])
 
     return (
         <Div flexDir="column" >
             <H1 fSize="40px"letSp=".1rem">Encuestas</H1>
             <Button _hoverBc="orange" letSp=".1rem"wd="12rem"hg="3rem"fSize="22px"onClick={()=>navigate("/survey")}>Hacer encuesta</Button>
             <Div flWr="wrap" jfCont="space-around"  alItems="space-around" wd="100%" hg="100vh">
-            {surveys !== undefined ? surveys.map((sur)=> (
+            {surveys.length !== 0 ? surveys.map((sur)=> (
                 <Div bs="8px 8px .7rem .3rem gray"
                     bc="black" 
                     mt="26px" 
