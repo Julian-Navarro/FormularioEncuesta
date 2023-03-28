@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Div, H1, Select } from "../../../styled-components/styled-components";
 
 export default function CityForm({ input,  handlerSetInput }) {
-    const cities = ["Chile", "Argentina", "Perú", "Venezuela"];
+    const cities = ["Chile", "Argentina", "Peru", "Venezuela"];
     const countries = { 
         Venezuela: [
             "Amazonas",
@@ -101,25 +101,27 @@ export default function CityForm({ input,  handlerSetInput }) {
             "Tumbes"
         ]
     };
-    const [commune, setCommune] = useState([]);
-
-
+    const [country, setCountry] = useState("");
+    
     const green = "#00FA9A"
+useEffect(()=>{
+
+},[country])
     return (
         <Div flexDir="column" wd="70%" hg="30vh">
             <H1>¿Donde vives?</H1>
             <Div wd="100%" jfCont="space-between">
 
-              <Select br="0px" wd="11rem" onClick={(e)=>handlerSetInput(e)} defaultValue={input.city} name="city" id="">
+              <Select br="0px" wd="11rem" onClick={(e)=>{setCountry(e.target.value);handlerSetInput(e)}} defaultValue={input.city} name="city" id="">
                   <option value="default">Seleccionar ciudad</option>
                   {
                       cities.map((c)=> <option value={c} key={c}>{c}</option> )
                   }
               </Select>
               <Select br="0px" wd="11rem" onClick={(e)=>handlerSetInput(e)} defaultValue={input.commune} name="commune" id="">
-                  <option value="default">Seleccionar comuna</option>
+                  <option value="default">Seleccionar Ciudad</option>
                   {
-                      input.city !== "" ? cities[input.city].map((c)=> <option value={c} key={c}>{c}</option> ) : null
+                      country !== "" ? cities[country].map((c)=> <option value={c} key={c}>{c}</option> ) : null
                   }
               </Select>
             </Div>
