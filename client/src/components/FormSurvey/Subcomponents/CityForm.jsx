@@ -119,7 +119,7 @@ export default function CityForm({ input,  handlerSetInput }) {
               <Select br="0px" wd="11rem" onClick={(e)=>handlerSetInput(e)} defaultValue={input.commune} name="commune" id="">
                   <option value="default">Seleccionar comuna</option>
                   {
-                      cities[input.city].map((c)=> <option value={c} key={c}>{c}</option> )
+                      input.city !== "" ? cities[input.city].map((c)=> <option value={c} key={c}>{c}</option> ) : null
                   }
               </Select>
             </Div>
