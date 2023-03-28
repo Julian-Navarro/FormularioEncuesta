@@ -20,7 +20,7 @@ export default function Survey () {
             <H1 fSize="40px"letSp=".1rem">Encuestas</H1>
             <Button _hoverBc="orange" letSp=".1rem"wd="12rem"hg="3rem"fSize="22px"onClick={()=>navigate("/survey")}>Hacer encuesta</Button>
             <Div flWr="wrap" jfCont="space-around"  alItems="space-around" wd="100%" hg="100vh">
-            {surveys !== undefined ? surveys.map((sur)=> (
+            {surveys.length !== 0 ? surveys.map((sur)=> (
                 <Div bs="8px 8px .7rem .3rem gray"
                     bc="black" 
                     mt="26px" 
