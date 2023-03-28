@@ -48,8 +48,10 @@ export default function FormSurvey () {
         if(typeof input[keys[page]] === "object") {
             if(!input[keys[page]].includes(e.target.value)) {
                 input[keys[page]].push(e.target.value)
-
+console.log("1");
             } else {
+console.log("2");
+
                 const index = input[keys[page]].indexOf(e.target.value);
                 const first = input[keys[page]].slice(0, index);
                 const second = input[keys[page]].slice(index+1);
@@ -57,9 +59,14 @@ export default function FormSurvey () {
                 setInput({...input, [keys[page]]: final})
             }
         } else {
+
             if(e.target.value!== "default") {
+console.log("3");
+
                 setInput({...input, [e.target.name]: e.target.value})
             } else {
+console.log("4");
+
                 setInput({...input, [e.target.name]: ""})
             }
         }
