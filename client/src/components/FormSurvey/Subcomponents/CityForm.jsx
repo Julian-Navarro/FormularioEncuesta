@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Div, H1, Select } from "../../../styled-components/styled-components";
 
-export default function CityForm({ input,  handlerSetInput }) {
+export default function CityForm({ input,  handlerSetInput, setInput }) {
     const cities = ["Chile", "Argentina", "Peru", "Venezuela"];
     const countries = { 
         Venezuela: [
@@ -48,7 +48,6 @@ export default function CityForm({ input,  handlerSetInput }) {
             "Catamarca",
             "Jujuy",
             "Salta",
-            "Formosa",
             "Santa cruz",
             "Tierra del fuego",
             "Tucumán"
@@ -58,7 +57,6 @@ export default function CityForm({ input,  handlerSetInput }) {
             "Tarapacá",
             "Antofagasta",
             "Atacama",
-            "Coquimbo",
             "Valparaíso",
             "Coquimbo",
             "Libertador General Bernardo O'Higgins",
@@ -101,29 +99,40 @@ export default function CityForm({ input,  handlerSetInput }) {
             "Tumbes"
         ]
     };
-    const [country, setCountry] = useState("");
-    
-    const green = "#00FA9A"
-useEffect(()=>{
+    const [countryFlag, setCountryFlag] = useState(false);
+    const [country, setCountry] = useState(input.city);
 
-},[country])
+    function handler(e, input){
+        if(e.target.value !== input.city) {
+            setCountry(e.target.value)
+            setInput({
+                ...input,
+                [e.target.name]: e.target.value,
+                commune: ""
+            })
+        }
+        setCountryFlag(!countryFlag)
+    };
+useEffect(()=>{
+},[input, countryFlag])
     return (
         <Div flexDir="column" wd="70%" hg="30vh">
             <H1>¿Donde vives?</H1>
             <Div wd="100%" jfCont="space-between">
 
-              <Select br="0px" wd="11rem" onClick={(e)=>{setCountry(e.target.value);handlerSetInput(e)}} defaultValue={input.city} name="city" id="">
-                  <option value="default">Seleccionar ciudad</option>
+              <Select br="0px" wd="11rem" onClick={(e)=>{handler(e, input)}} defaultValue={input.city} name="city" id="">
+                  <option value="default">Seleccionar tu país</option>
                   {
                       cities.map((c)=> <option value={c} key={c}>{c}</option> )
                   }
               </Select>
-              <Select br="0px" wd="11rem" onClick={(e)=>handlerSetInput(e)} defaultValue={input.commune} name="commune" id="">
-                  <option value="default">Seleccionar Ciudad</option>
-                  {
-                      country !== "" ? cities[country].map((c)=> <option value={c} key={c}>{c}</option> ) : null
-                  }
-              </Select>
+              { country !== "" 
+              ? <Select br="0px" wd="11rem" defaultValue={input.commune} onClick={(e)=>handlerSetInput(e)} name="commune" id="">
+                  <option value="default">Seleccionar tu ciudad</option>
+                      {countries[country]?.map((c)=> (<option value={c} key={c}>{c}</option>) )} 
+                </Select> 
+              : null
+              }
             </Div>
         </Div>
     )

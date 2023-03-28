@@ -47,9 +47,12 @@ export default function FormSurvey () {
     function handlerSetInput(e) {
         if(typeof input[keys[page]] === "object") {
             if(!input[keys[page]].includes(e.target.value)) {
+                //Si no lo incluye se agrega el valor al arreglo
                 input[keys[page]].push(e.target.value)
-
+console.log("1");
             } else {
+console.log("2");
+                //Si el valor ya está incluido en el arreglo se elimina
                 const index = input[keys[page]].indexOf(e.target.value);
                 const first = input[keys[page]].slice(0, index);
                 const second = input[keys[page]].slice(index+1);
@@ -57,9 +60,14 @@ export default function FormSurvey () {
                 setInput({...input, [keys[page]]: final})
             }
         } else {
+
             if(e.target.value!== "default") {
+console.log("3");
+
                 setInput({...input, [e.target.name]: e.target.value})
             } else {
+console.log("4");
+console.log("SETEANDO ", e.target.name, " : ", e.target.value  );
                 setInput({...input, [e.target.name]: ""})
             }
         }
@@ -158,7 +166,7 @@ useEffect(()=>{
                   {page===0? <GenderForm input={input} handlerSetInput={handlerSetInput}/>:null}
                   {page===1? <LivesWith input={input} handlerSetInput={handlerSetInput}/>:null}
                   {page===2? <ChildrensForm input={input} handlerSetInput={handlerSetInput}/>:null}
-                  {page===3? <CityForm input={input} handlerSetInput={handlerSetInput}/>:null}
+                  {page===3? <CityForm input={input} handlerSetInput={handlerSetInput} setInput={setInput}/>:null}
                   {page===4? <OccupationForm input={input} handlerSetInput={handlerSetInput}/>:null}
                   {page===5? <PunctuationForm input={input} handlerSetInput={handlerSetInput}/>:null}
                   {page===6? <SurveyEnd/>:null}
