@@ -14,6 +14,9 @@ export default function Survey () {
     useEffect(() => {
         getSurveys()
     },[])
+    useEffect(()=>{
+
+    },[surveys])
 
     return (
         <Div flexDir="column" >
