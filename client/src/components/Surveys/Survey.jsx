@@ -41,7 +41,7 @@ export default function Survey () {
                             <H1 mr="4px" br="12px"pd="0px" fSize="16px"wd="5rem"bg="#5AD4EC">{sur.gender}</H1>
                         </Div>
                         <Div wd="90%"hg="1.7rem" mb="4px" bc="none"bg="#5AD4EC"br="none" clPath="100% 0%, 83% 80%, 5%  100%, 20% 0%">
-                            <H1 mr="4px" br="12px"fWeight="700" fSize="16px"wd="5rem"bg="#5AD4EC">Ciudad: </H1>
+                            <H1 mr="4px" br="12px"fWeight="700" fSize="16px"wd="5rem"bg="#5AD4EC">Pais: </H1>
                             <H1 mr="4px" br="12px"pd="0px" fSize="16px"wd="5rem"bg="#5AD4EC">{sur.city}</H1>
                         </Div>
                         {sur.childrens?
@@ -51,7 +51,7 @@ export default function Survey () {
                         </Div>
                         :null}
                         <Div wd="90%"hg="1.7rem" mb="4px" bc="none"bg="#5AD4EC"br="none" clPath="93% 0, 100% 93%, 7%  100%, 0% 7%">
-                            <H1 mr="4px" br="12px"fSize="16px" fWeight="700"wd="5rem"bg="#5AD4EC">Comuna: </H1>
+                            <H1 mr="4px" br="12px"fSize="16px" fWeight="700"wd="5rem"bg="#5AD4EC">Ciudad: </H1>
                             <H1 mr="4px" br="12px"pd="0px" fSize="16px"wd="5rem"bg="#5AD4EC">{sur.commune}</H1>
                         </Div>
                         <Div wd="90%"hg="1.7rem" mb="4px" bc="none"bg="#5AD4EC"br="none" clPath="100% 0%, 83% 80%, 5%  100%, 20% 0%">
