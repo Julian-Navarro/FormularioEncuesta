@@ -12,8 +12,7 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-database
-  .initialize()
+database.initialize()
   .then(() => console.log("Database connected."))
   .catch((error) => console.log(error));
 
