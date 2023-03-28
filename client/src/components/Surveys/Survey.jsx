@@ -6,7 +6,7 @@ import { H1, Div, Button} from "../../styled-components/styled-components";
 
 export default function Survey () {
     const navigate = useNavigate();
-    const [surveys, setSurveys] = useState(undefined);
+    const [surveys, setSurveys] = useState([]);
     const getSurveys = async () => {
         const surveysDB = await axios.get(`${HOST}/api/surveys`)
         setSurveys(surveysDB.data)
